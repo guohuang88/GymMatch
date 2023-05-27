@@ -6,6 +6,12 @@
       <label for="name">Name:</label>
       <input type="text" id="name" v-model="name">
       <br>
+      <label for="username">Username:</label>
+      <input type="text" id="username" v-model="username">
+      <br>
+      <label for="pass">Password:</label>
+      <input type="password" id="pass" v-model="pass">
+      <br>
       <label for="age">Age:</label>
       <input type="number" id="age" v-model="age">
       <br>
@@ -54,10 +60,11 @@
 import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
-  name: '',
   data () {
     return {
       name: '',
+      username: '',
+      pass: '',
       age: '',
       gender: '',
       gymFreq: '',
@@ -70,6 +77,8 @@ export default {
     async register () {
       const res = await AuthenticationService.register({
         name: this.name,
+        username: this.username,
+        pass: this.pass,
         age: this.age,
         gender: this.gender,
         gymFreq: this.gymFreq,
