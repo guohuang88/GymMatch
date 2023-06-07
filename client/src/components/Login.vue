@@ -15,10 +15,10 @@
       </form>
     </div>
   </template>
-  
+
   <script>
   import AuthenticationService from '@/services/AuthenticationService'
-  
+
   export default {
     data () {
       return {
@@ -38,4 +38,3 @@
   }
   </script>
   <style></style>
-  
