@@ -6,11 +6,11 @@
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" v-model="name">
       <br>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" v-model="username">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" v-model="email">
       <br>
-      <label for="pass">Password:</label>
-      <input type="password" id="pass" name="pass" v-model="pass">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" v-model="pass">
       <br>
       <label for="age">Age:</label>
       <input type="number" id="age" name="age" v-model="age">
@@ -47,9 +47,11 @@
       <label for="gymLoc">Choose a gym:</label>
       <select for="gymLoc" id="gymLoc" name="gymLoc" v-model="gymLoc">
         <option value="activesg">ActiveSG</option>
-        <option value="body">Anytime Fitness</option>
-        <option value="power">Gym Box</option>
+        <option value="anytime">Anytime Fitness</option>
+        <option value="gymbox">Gym Box</option>
       </select>
+      <br>
+      <div class="error" v-html="error"></div>
       <br>
       <button @click="register">Register</button>
     </form>
@@ -63,32 +65,40 @@ export default {
   data () {
     return {
       name: '',
-      username: '',
-      pass: '',
+      email: '',
+      password: '',
       age: '',
       gender: '',
       gymFreq: '',
       yoe: '',
       tot: '',
-      gymLoc: ''
+      gymLoc: '',
+      error: null
     }
   },
   methods: {
     async register () {
-      const res = await AuthenticationService.register({
-        name: this.name,
-        username: this.username,
-        pass: this.pass,
-        age: this.age,
-        gender: this.gender,
-        gymFreq: this.gymFreq,
-        yoe: this.yoe,
-        tot: this.tot,
-        gymLoc: this.gymLoc
-      })
-      console.log(res.data)
+      try {
+        await AuthenticationService.register({
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          age: this.age,
+          gender: this.gender,
+          gymFreq: this.gymFreq,
+          yoe: this.yoe,
+          tot: this.tot,
+          gymLoc: this.gymLoc
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      }
     }
   }
 }
 </script>
-<style></style>
+<style scoped>
+  .error {
+    color: red;
+  }
+</style>

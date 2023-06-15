@@ -3,8 +3,8 @@
       <h1>GymMatch</h1>
       <form>
         <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" v-model="email">
         <br>
         <label for="pass">Password:</label>
         <input type="password" id="pass" v-model="pass">
@@ -22,14 +22,14 @@
   export default {
     data () {
       return {
-        username: '',
+        email: '',
         pass: ''
       }
     },
     methods: {
       async login () {
         const res = await AuthenticationService.login({
-          username: this.username,
+          email: this.email,
           pass: this.pass
         })
         console.log(res.data)
