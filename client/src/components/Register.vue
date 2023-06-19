@@ -10,7 +10,7 @@
       <input type="email" id="email" name="email" v-model="email">
       <br>
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" v-model="pass">
+      <input type="password" id="password" name="password" v-model="password">
       <br>
       <label for="age">Age:</label>
       <input type="number" id="age" name="age" v-model="age">

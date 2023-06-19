@@ -6,8 +6,8 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" v-model="email">
         <br>
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" v-model="pass">
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password">
         <br>
         <button @click="login">Login</button>
         <br>
@@ -23,16 +23,20 @@
     data () {
       return {
         email: '',
-        pass: ''
+        password: ''
       }
     },
     methods: {
       async login () {
-        const res = await AuthenticationService.login({
-          email: this.email,
-          pass: this.pass
-        })
-        console.log(res.data)
+        try {
+          await AuthenticationService.login({
+            email: this.email,
+            password: this.password,
+            error: null
+          })
+        } catch (error) {
+          this.error = error.response.data.error
+        }
       }
     }
   }
