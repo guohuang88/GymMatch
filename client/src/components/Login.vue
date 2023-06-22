@@ -29,12 +29,16 @@
     methods: {
       async login () {
         try {
-          await AuthenticationService.login({
+          console.log('here')
+          const res = await AuthenticationService.login({
             email: this.email,
-            password: this.password,
-            error: null
+            password: this.password
           })
+          console.log('there')
+          this.$store.dispatch('setToken', res.data.token)
+          this.$store.dispatch('setUser', res.data.token)
         } catch (error) {
+          console.log('error')
           this.error = error.response.data.error
         }
       }

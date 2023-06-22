@@ -29,23 +29,23 @@
         <option value="moreThanThree">More than three times a week</option>
       </select>
       <br>
-      <label for="yoe">Years of Experience:</label>
-      <select for="yoe" id="yoe" name="yoe" v-model="yoe">
+      <label for="yearsOfExp">Years of Experience:</label>
+      <select for="yearsOfExp" id="yearsOfExp" name="yearsOfExp" v-model="yearsOfExp">
         <option value="lessThanOne">Less than one year</option>
         <option value="one">One year</option>
         <option value="two">Two years</option>
         <option value="moreThanTwo">More than two years</option>
       </select>
       <br>
-      <label for="tot">Types of Training:</label>
-      <select for="tot" id="tot" name="tot" v-model="tot">
+      <label for="typesOfTraining">Types of Training:</label>
+      <select for="typesOfTraining" id="typesOfTraining" name="typesOfTraining" v-model="typesOfTraining">
         <option value="cali">Calisthenics</option>
         <option value="body">Body Building</option>
-        <option value="power">Power Lifter</option>
+        <option value="power">Power Lifting</option>
       </select>
       <br>
-      <label for="gymLoc">Choose a gym:</label>
-      <select for="gymLoc" id="gymLoc" name="gymLoc" v-model="gymLoc">
+      <label for="gymLocation">Choose a gym:</label>
+      <select for="gymLocation" id="gymLocation" name="gymLocation" v-model="gymLocation">
         <option value="activesg">ActiveSG</option>
         <option value="anytime">Anytime Fitness</option>
         <option value="gymbox">Gym Box</option>
@@ -70,27 +70,32 @@ export default {
       age: '',
       gender: '',
       gymFreq: '',
-      yoe: '',
-      tot: '',
-      gymLoc: '',
+      yearsOfExp: '',
+      typesOfTraining: '',
+      gymLocation: '',
       error: null
     }
   },
   methods: {
     async register () {
+      console.log('button was clicked')
       try {
-        await AuthenticationService.register({
+        console.log('reg can')
+        const response = await AuthenticationService.register({
           name: this.name,
           email: this.email,
           password: this.password,
           age: this.age,
           gender: this.gender,
           gymFreq: this.gymFreq,
-          yoe: this.yoe,
-          tot: this.tot,
-          gymLoc: this.gymLoc
+          yearsOfExp: this.yearsOfExp,
+          typesOfTraining: this.typesOfTraining,
+          gymLocation: this.gymLocation
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.token)
       } catch (error) {
+        console.log('reg cannot')
         this.error = error.response.data.error
       }
     }
