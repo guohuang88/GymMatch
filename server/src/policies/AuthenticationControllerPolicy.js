@@ -3,10 +3,17 @@ const Joi = require('joi')
 module.exports = {
     register (req, res, next) {
         const schema = Joi.object({
+            name: Joi.string(),
             email: Joi.string().email(),
             password: Joi.string().regex(
                 new RegExp('^[a-zA-Z0-9]{8,32}$')
-            )
+            ),
+            age: Joi.number(),
+            gender: Joi.string(),
+            gymfreq: Joi.string(),
+            yearsofexp: Joi.string(),
+            typesoftraining: Joi.string(),
+            gymlocation: Joi.string()
         })
 
         const {error} = schema.validate(req.body)
@@ -30,7 +37,7 @@ module.exports = {
                     break
                 default:
                     res.status(400).send({
-                        error: "Invalid registration input"
+                        error: "Invalid registration input" + error.details[0].context.key
                     })
             }
         } else {
