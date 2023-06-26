@@ -23,11 +23,12 @@ module.exports = (sequelize, DataTypes) => {
         password: DataTypes.STRING,
         age: DataTypes.INTEGER,
         gender: DataTypes.STRING,
-        gymfreq: DataTypes.STRING,
-        yearsofexp: DataTypes.STRING,
-        typesoftraining: DataTypes.STRING,
-        gymlocation: DataTypes.STRING
+        gymFreq: DataTypes.STRING,
+        yearsOfExp: DataTypes.STRING,
+        typesOfTraining: DataTypes.STRING,
+        gymLocation: DataTypes.STRING
     }, {
+        tableName: 'users',
         timestamps: false,
         indexes: [{
             unique: true,

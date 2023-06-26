@@ -14,6 +14,7 @@ function jwtSignUser (user) {
 module.exports = {
     async register (req, res) {
         try {
+            console.log('registered')
             const user = await User.create(req.body)
             const userJson = user.toJSON()
             res.send({
@@ -21,6 +22,7 @@ module.exports = {
                 token: jwtSignUser(userJson)
             })
         } catch (err) {
+            console.log('not reg')
             res.status(400).send({
                 error: 'This email account is already in use. '
             })
@@ -28,14 +30,21 @@ module.exports = {
     },
     async login (req, res) {
         try {
+            console.log('login successful')
             const {email, password} = req.body
+            // console.log(email)
+            // console.log(password)
             const user = await User.findOne({
                 where: {
                     email: email
                 }
-            })
+            }
+            // TODO: test ltr
+            // res.status(200).send({status: 'received'})
+            )
 
             if (!user) {
+                console.log('wrong email or pass')
                 return res.status(403).send ({
                     error: "Wrong email or password!"
                 })
@@ -43,6 +52,7 @@ module.exports = {
 
             const isPasswordValid = await user.comparePassword(password)
             if (!isPasswordValid) {
+                console.log('wrong pass')
                 return res.status(403).send({
                     error: "Wrong password!"
                 })

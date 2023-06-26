@@ -2,6 +2,7 @@ const Joi = require('joi')
 
 module.exports = {
     register (req, res, next) {
+        console.log('backend init')
         const schema = Joi.object({
             name: Joi.string(),
             email: Joi.string().email(),
@@ -10,15 +11,17 @@ module.exports = {
             ),
             age: Joi.number(),
             gender: Joi.string(),
-            gymfreq: Joi.string(),
-            yearsofexp: Joi.string(),
-            typesoftraining: Joi.string(),
-            gymlocation: Joi.string()
+            gymFreq: Joi.string(),
+            yearsOfExp: Joi.string(),
+            typesOfTraining: Joi.string(),
+            gymLocation: Joi.string()
         })
-
+        console.log(schema)
+        console.log('joi over')
         const {error} = schema.validate(req.body)
 
         if (error) {
+            console.log(error)
             switch(error.details[0].context.key) {
                 case 'email':
                     res.status(400).send({
@@ -37,10 +40,11 @@ module.exports = {
                     break
                 default:
                     res.status(400).send({
-                        error: "Invalid registration input" + error.details[0].context.key
+                        error: "Invalid registration input " + error.details[0].context.key
                     })
             }
         } else {
+            console.log('yesh we did it')
             next()
         }
 
