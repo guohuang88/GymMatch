@@ -9,6 +9,7 @@ import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 
 Vue.config.productionTip = false
+Vue.config.devtools = true
 
 Vue.use(Vuetify)
 

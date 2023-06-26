@@ -30,13 +30,18 @@ module.exports = {
     },
     async login (req, res) {
         try {
-            console.log('im here')
+            console.log('login successful')
             const {email, password} = req.body
+            // console.log(email)
+            // console.log(password)
             const user = await User.findOne({
                 where: {
                     email: email
                 }
-            })
+            }
+            // TODO: test ltr
+            // res.status(200).send({status: 'received'})
+            )
 
             if (!user) {
                 console.log('wrong email or pass')

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>GymMatch</h1>
-    <form>
+    <form action="/#/home">
       <h2>Register</h2>
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" v-model="name">
@@ -17,43 +17,45 @@
       <br>
       <label for="gender">Gender:</label>
       <select for="gender" id="gender" name="gender" v-model="gender">
-        <option value="male">Male</option>
-        <option value="female">female</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
       </select>
       <br>
       <label for="gymFreq">Gym Frequency:</label>
       <select for="gymFreq" id="gymFreq" name="gymFreq" v-model="gymFreq">
-        <option value="one">One time a week</option>
-        <option value="two">Two times a week</option>
-        <option value="three">Three times a week</option>
-        <option value="moreThanThree">More than three times a week</option>
+        <option value="One time a week">One time a week</option>
+        <option value="Two times a week">Two times a week</option>
+        <option value="Three times a week">Three times a week</option>
+        <option value="More than three times a week">More than three times a week</option>
       </select>
       <br>
       <label for="yearsOfExp">Years of Experience:</label>
       <select for="yearsOfExp" id="yearsOfExp" name="yearsOfExp" v-model="yearsOfExp">
-        <option value="lessThanOne">Less than one year</option>
-        <option value="one">One year</option>
-        <option value="two">Two years</option>
-        <option value="moreThanTwo">More than two years</option>
+        <option value="Less than one year">Less than one year</option>
+        <option value="One year">One year</option>
+        <option value="Two years">Two years</option>
+        <option value="More than two years">More than two years</option>
       </select>
       <br>
       <label for="typesOfTraining">Types of Training:</label>
       <select for="typesOfTraining" id="typesOfTraining" name="typesOfTraining" v-model="typesOfTraining">
-        <option value="cali">Calisthenics</option>
-        <option value="body">Body Building</option>
-        <option value="power">Power Lifting</option>
+        <option value="Calisthenics">Calisthenics</option>
+        <option value="Body Building">Body Building</option>
+        <option value="Power Lifting">Power Lifting</option>
       </select>
       <br>
       <label for="gymLocation">Choose a gym:</label>
       <select for="gymLocation" id="gymLocation" name="gymLocation" v-model="gymLocation">
-        <option value="activesg">ActiveSG</option>
-        <option value="anytime">Anytime Fitness</option>
-        <option value="gymbox">Gym Box</option>
+        <option value="ActiveSG">ActiveSG</option>
+        <option value="Anytime Fitness">Anytime Fitness</option>
+        <option value="Gym Box">Gym Box</option>
       </select>
       <br>
       <div class="error" v-html="error"></div>
       <br>
-      <button @click="register">Register</button>
+      <button class="button button1" @click="register">Register</button>
+      <br>
+      <a href="http://localhost:8080/#/login">Already have an account? Click here to sign in!</a>
     </form>
   </div>
 </template>
@@ -106,4 +108,27 @@ export default {
   .error {
     color: red;
   }
+
+  .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+.button1:hover {
+  background-color: #555555;
+  color: white;
+}
 </style>
