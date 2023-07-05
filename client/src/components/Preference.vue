@@ -1,7 +1,7 @@
 <template>
     <div>
       <!-- <form action="/#/preferenceCompleted"> -->
-        <form>
+        <form action="/#/preferenceCompleted">
         <h2>Let us know your preferred gym buddy's information</h2>
         <label for="gender">Gender:</label>
         <select for="gender" id="gender" name="gender" v-model="gender">
@@ -62,6 +62,13 @@
             gymLocation: this.gymLocation
           })
           console.log(response) // Access the response data
+
+          // const matchedUsers = await response
+          // console.log(matchedUsers + '===========')
+          console.log('true')
+          this.$router.push({ name: 'preferenceCompleted', params: { users: JSON.stringify(response) } })
+          console.log('Continuing after successful response')
+
           // Handle the response data as needed
         } catch (error) {
           if (error.code === 'ECONNABORTED') {
