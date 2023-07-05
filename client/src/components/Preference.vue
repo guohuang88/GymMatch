@@ -33,7 +33,7 @@
         <br>
         <div class="error" v-html="error"></div>
         <br>
-        <button class="button button1" @click="preference">Submit</button>
+        <button type="button" class="button button1" @click="preference">Submit</button>
       </form>
     </div>
   </template>
@@ -53,34 +53,28 @@
     },
     methods: {
       async preference () {
-        console.log('button was clicked')
+        console.log('Button was clicked')
         try {
-          console.log('pref can')
-          console.log(this.gender)
-          console.log(this.yearsOfExp)
-          console.log(this.typesOfTraining)
-          console.log(this.gymLocation)
           const response = await PreferenceService.preference({
             gender: this.gender,
-            gymFreq: this.gymFreq,
             yearsOfExp: this.yearsOfExp,
             typesOfTraining: this.typesOfTraining,
             gymLocation: this.gymLocation
           })
-
-          const matchedUsers = await response.data.users
-          console.log(matchedUsers + '===========')
-          console.log('true')
-          this.$router.push({ name: 'preferenceCompleted', params: { users: JSON.stringify(matchedUsers) } })
-          console.log('Continuing after successful response')
+          console.log(response) // Access the response data
+          // Handle the response data as needed
         } catch (error) {
-          console.log('pref cannot')
-          this.error = error.response.data.error
+          if (error.code === 'ECONNABORTED') {
+            console.log('Request timed out')
+          } else {
+            console.log(error.message)
+          }
         }
       }
     }
   }
   </script>
+
   <style scoped>
     .error {
       color: red;

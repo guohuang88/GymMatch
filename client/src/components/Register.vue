@@ -53,7 +53,7 @@
       <br>
       <div class="error" v-html="error"></div>
       <br>
-      <button class="button button1" @click="register">Register</button>
+      <button type="button" class="button button1" @click="register">Register</button>
       <br>
       <a href="http://localhost:8080/#/login">Already have an account? Click here to sign in!</a>
     </form>

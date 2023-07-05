@@ -10,7 +10,7 @@
         <input type="password" id="password" v-model="password">
         <br>
         <br>
-        <button class="button button1" @click="login">Login</button>
+        <button type="button" class="button button1" @click="login">Login</button>
         <br>
         <a href="http://localhost:8080/#/register">Do not have an account? Create one now!</a>
       </form>

@@ -1,6 +1,6 @@
 const {User} = require('../models')
 module.exports = {
-    async preference (req, res) {
+    async preference (req, res, next) {
         try {
             console.log('in')
             const { gender, yearsOfExp, typesOfTraining, gymLocation } = req.body
@@ -16,11 +16,6 @@ module.exports = {
                     gymLocation: gymLocation
                 }
             })
-            if (users) {
-                console.log(users)
-                return res.json(users)
-
-            }
 
             if (!users) {
                 console.log('no user')
@@ -28,8 +23,11 @@ module.exports = {
                     error: "no user"
                 })
             }
+            console.log(users)
 
-            res.status(200).send({status: 'received'})
+            res.setHeader('Content-Type', 'application/json')
+            res.status(200).send(JSON.stringify(users))
+
         } catch (err) {
             console.log('not in ' + err)
             res.status(400).send({
