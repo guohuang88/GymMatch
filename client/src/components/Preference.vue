@@ -1,6 +1,5 @@
 <template>
     <div>
-      <!-- <form action="/#/preferenceCompleted"> -->
         <form action="/#/preferenceCompleted">
         <h2>Let us know your preferred gym buddy's information</h2>
         <label for="gender">Gender:</label>
