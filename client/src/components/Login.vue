@@ -35,12 +35,17 @@
             email: this.email,
             password: this.password
           })
+          console.log(response)
           console.log('there')
+          this.$router.push('/home')
           this.$store.dispatch('setToken', response.data.token)
-          this.$store.dispatch('setUser', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
         } catch (error) {
-          console.log('error')
-          this.error = error.response.data.error
+          if (error.code === 'ECONNABORTED') {
+            console.log('Request timed out')
+          } else {
+            console.log(error.message)
+          }
         }
       }
     }

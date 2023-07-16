@@ -94,12 +94,18 @@ export default {
           typesOfTraining: this.typesOfTraining,
           gymLocation: this.gymLocation
         })
+        console.log(response)
+        console.log('i reached here alr')
+        this.$router.push('/home')
         this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
-        console.log('reg cannot')
-        this.error = error.response.data.error
-      }
+          if (error.code === 'ECONNABORTED') {
+            console.log('Request timed out')
+          } else {
+            console.log(error.message)
+          }
+        }
     }
   }
 }

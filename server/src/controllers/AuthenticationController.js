@@ -14,15 +14,18 @@ function jwtSignUser (user) {
 module.exports = {
     async register (req, res) {
         try {
-            console.log('registered')
             const user = await User.create(req.body)
             const userJson = user.toJSON()
-            res.send({
+            res.setHeader('Content-Type', 'application/json')
+            res.status(200).send({
                 user: userJson,
                 token: jwtSignUser(userJson)
             })
+            console.log(userJson)
+            console.log('registered')
         } catch (err) {
             console.log('not reg')
+            console.log(err)
             res.status(400).send({
                 error: 'This email account is already in use. '
             })
@@ -30,7 +33,6 @@ module.exports = {
     },
     async login (req, res) {
         try {
-            console.log('login successful')
             const {email, password} = req.body
             // console.log(email)
             // console.log(password)
@@ -58,12 +60,14 @@ module.exports = {
                 })
             }
 
+            console.log('login successful')
             const userJson = user.toJSON()
-            res.send({
+            res.setHeader('Content-Type', 'application/json')
+            res.status(200).send({
                 user: userJson,
                 token: jwtSignUser(userJson)
             })
-
+            console.log('log in')
 
         } catch (error) {
             res.status(500).send({

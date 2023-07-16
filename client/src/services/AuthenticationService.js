@@ -1,19 +1,34 @@
 import Api from '@/services/Api'
 
 export default {
-  register (credentials) {
+  async register (credentials) {
+    const headers = {
+      'Content-Type': 'application/json'
+    }
     console.log('reg in')
     try {
       console.log('reg confirm in')
-      return Api().post('register', credentials)
+      const response = await Api().post('register', credentials, {
+        timeout: 5000,
+        headers: headers
+      })
+      console.log(response.data)
+      return response.data
     } catch (error) {
       console.log(error)
     }
   },
-  login (credentials) {
+  async login (credentials) {
     console.log('log in await')
+    const headers = {
+      'Content-Type': 'application/json'
+    }
     try {
-     return Api().post('login', credentials)
+      const response = await Api().post('login', credentials, {
+        timeout: 5000,
+        headers: headers
+     })
+     return response.data
     } catch (error) {
       console.log(error)
     }
