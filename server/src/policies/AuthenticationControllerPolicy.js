@@ -24,11 +24,13 @@ module.exports = {
             console.log(error)
             switch(error.details[0].context.key) {
                 case 'email':
+                    res.setHeader('Content-Type', 'application/json')
                     res.status(400).send({
                         error: "You must provide a valid email address"
                     })
                     break
                 case 'password':
+                    res.setHeader('Content-Type', 'application/json')
                     res.status(400).send({
                         error: ` The password must follow the following rules:
                         <br>
@@ -39,6 +41,7 @@ module.exports = {
                     })
                     break
                 default:
+                    res.setHeader('Content-Type', 'application/json')
                     res.status(400).send({
                         error: "Invalid registration input " + error.details[0].context.key
                     })

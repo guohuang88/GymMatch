@@ -47,6 +47,7 @@ module.exports = {
 
             if (!user) {
                 console.log('wrong email or pass')
+                res.setHeader('Content-Type', 'application/json')
                 return res.status(403).send ({
                     error: "Wrong email or password!"
                 })
@@ -55,6 +56,7 @@ module.exports = {
             const isPasswordValid = await user.comparePassword(password)
             if (!isPasswordValid) {
                 console.log('wrong pass')
+                res.setHeader('Content-Type', 'application/json')
                 return res.status(403).send({
                     error: "Wrong password!"
                 })
@@ -70,6 +72,7 @@ module.exports = {
             console.log('log in')
 
         } catch (error) {
+            res.setHeader('Content-Type', 'application/json')
             res.status(500).send({
                 error: "An error has occured trying to log in " + error
             })
