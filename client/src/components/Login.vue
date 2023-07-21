@@ -40,8 +40,10 @@
           console.log(response)
           console.log('there')
           this.$router.push('/home')
-          this.$store.dispatch('setToken', response.data.token)
-          this.$store.dispatch('setUser', response.data.user)
+          console.log('Before committing mutations:', this.$store.state)
+          this.$store.dispatch('setToken', response.token)
+          this.$store.dispatch('setUser', response.user)
+          console.log('After committing mutations:', this.$store.state)
         } catch (error) {
           if (error.code === 'ECONNABORTED') {
             console.log('Request timed out')
