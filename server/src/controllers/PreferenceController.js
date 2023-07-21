@@ -1,19 +1,25 @@
 const {User} = require('../models')
+const { Op } = require('sequelize')
 module.exports = {
     async preference (req, res, next) {
         try {
             console.log('in')
-            const { gender, yearsOfExp, typesOfTraining, gymLocation } = req.body
+            const { id, gender, yearsOfExp, typesOfTraining, gymLocation } = req.body
+            console.log(id)
             console.log(gender)
             console.log(yearsOfExp)
             console.log(typesOfTraining)
             console.log(gymLocation)
             const users = await User.findAll({
+                attributes: ['id', 'name', 'email', 'password', 'age', 'gender', 'gymFreq', 'yearsOfExp', 'typesOfTraining', 'gymLocation'],
                 where: {
-                    gender: gender,
-                    yearsOfExp: yearsOfExp,
-                    typesOfTraining: typesOfTraining,
-                    gymLocation: gymLocation
+                    [Op.and]: [
+                    { gender: 'Male' },
+                    { yearsOfExp: 'One year' },
+                    { typesOfTraining: 'Calisthenics' },
+                    { gymLocation: 'ActiveSG' },
+                    { id: { [Op.ne]: id } }
+                    ]
                 }
             })
 

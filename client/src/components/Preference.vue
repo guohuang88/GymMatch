@@ -54,7 +54,10 @@
       async preference () {
         console.log('Button was clicked')
         try {
+          const id = this.$store.state.user.id
+          console.log('userID: ', id)
           const response = await PreferenceService.preference({
+            id: id,
             gender: this.gender,
             yearsOfExp: this.yearsOfExp,
             typesOfTraining: this.typesOfTraining,
@@ -62,9 +65,6 @@
           })
           console.log(response) // Access the response data
 
-          // const matchedUsers = await response
-          // console.log(matchedUsers + '===========')
-          console.log('true')
           this.$router.push({ name: 'preferenceCompleted', params: { users: JSON.stringify(response) } })
           console.log('Continuing after successful response')
 
