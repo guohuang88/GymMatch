@@ -5,11 +5,17 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Preference from '@/components/Preference'
 import PreferenceCompleted from '@/components/PreferenceCompleted'
+import Introduction from '@/components/Introduction'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'introduction',
+      component: Introduction
+    },
     {
       path: '/register',
       name: 'register',
