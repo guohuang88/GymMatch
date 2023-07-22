@@ -13,7 +13,7 @@
         <br>
         <button type="submit" class="button button1">Login</button>
         <br>
-        <a href="http://localhost:8080/#/register">Do not have an account? Create one now!</a>
+        <a href="/#/register">Do not have an account? Create one now!</a>
       </form>
     </div>
   </template>

@@ -55,7 +55,7 @@
       <br>
       <button type="submit" class="button button1">Register</button>
       <br>
-      <a href="http://localhost:8080/#/login">Already have an account? Click here to sign in!</a>
+      <a href="/#/login">Already have an account? Click here to sign in!</a>
     </form>
   </div>
 </template>
