@@ -1,18 +1,19 @@
 <template>
     <div>
       <h1>GymMatch</h1>
-      <form action="/#/home">
+      <form @submit.prevent="login" method="post">
         <h2>Login</h2>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" v-model="email">
+        <input type="email" id="email" name="email" v-model="email" required>
         <br>
         <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password">
+        <input type="password" id="password" v-model="password" required>
         <br>
+        <div v-if="error" class="error">{{ error }}</div>
         <br>
-        <button type="button" class="button button1" @click="login">Login</button>
+        <button type="submit" class="button button1">Login</button>
         <br>
-        <a href="http://localhost:8080/#/register">Do not have an account? Create one now!</a>
+        <a href="/#/register">Do not have an account? Create one now!</a>
       </form>
     </div>
   </template>
@@ -24,7 +25,8 @@
     data () {
       return {
         email: '',
-        password: ''
+        password: '',
+        error: null
       }
     },
     methods: {
@@ -38,13 +40,19 @@
           console.log(response)
           console.log('there')
           this.$router.push('/home')
-          this.$store.dispatch('setToken', response.data.token)
-          this.$store.dispatch('setUser', response.data.user)
+          console.log('Before committing mutations:', this.$store.state)
+          this.$store.dispatch('setToken', response.token)
+          this.$store.dispatch('setUser', response.user)
+          console.log('After committing mutations:', this.$store.state)
         } catch (error) {
           if (error.code === 'ECONNABORTED') {
             console.log('Request timed out')
+          } else if (error.response && error.response.data && error.response.data.error) {
+            console.log(error.response.data.error)
+            this.error = error.response.data.error
           } else {
             console.log(error.message)
+            this.error = 'An unexpected error occurred.'
           }
         }
       }
@@ -52,6 +60,9 @@
   }
   </script>
   <style>
+  .error {
+    color: red;
+  }
   .button {
   background-color: #4CAF50; /* Green */
   border: none;

@@ -1,11 +1,8 @@
 <template>
-  <!-- <v-app> -->
-    <div>
+  <div>
     <h1>Welcome!</h1><br><br>
     <a class="button button1" href="/#/preference">Find a gym buddy now!</a>
-    <!-- <v-btn>Start Chatting</v-btn><br><br> -->
   </div>
-  <!-- </v-app> -->
 
 </template>
 
