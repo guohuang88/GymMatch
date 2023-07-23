@@ -14,10 +14,10 @@ module.exports = {
                 attributes: ['id', 'name', 'email', 'password', 'age', 'gender', 'gymFreq', 'yearsOfExp', 'typesOfTraining', 'gymLocation'],
                 where: {
                     [Op.and]: [
-                    { gender: 'Male' },
-                    { yearsOfExp: 'One year' },
-                    { typesOfTraining: 'Calisthenics' },
-                    { gymLocation: 'ActiveSG' },
+                    { gender: gender },
+                    { yearsOfExp: yearsOfExp },
+                    { typesOfTraining: typesOfTraining },
+                    { gymLocation: gymLocation },
                     { id: { [Op.ne]: id } }
                     ]
                 }

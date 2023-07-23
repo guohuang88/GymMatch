@@ -39,7 +39,7 @@
           :to="{
             name: 'register'
           }">
-          Sign Up
+          Register
         </v-btn>
 
         <v-btn

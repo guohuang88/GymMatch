@@ -6,6 +6,8 @@ import Home from '@/components/Home'
 import Preference from '@/components/Preference'
 import PreferenceCompleted from '@/components/PreferenceCompleted'
 import Introduction from '@/components/Introduction'
+import Schedule from '@/components/Schedule'
+import MeetingConfirmation from '@/components/MeetingConfirmation'
 
 Vue.use(Router)
 
@@ -40,6 +42,16 @@ export default new Router({
       path: '/preferenceCompleted',
       name: 'preferenceCompleted',
       component: PreferenceCompleted
+    },
+    {
+      path: '/schedule/:userId',
+      name: 'schedule',
+      component: Schedule
+    },
+    {
+      path: '/meetingConfirmation',
+      name: 'meetingConfirmation',
+      component: MeetingConfirmation
     }
   ]
 })
