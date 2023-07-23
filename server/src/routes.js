@@ -10,17 +10,21 @@ module.exports = (app) => {
         next();
     })
 
-    app.post('/register',
+    app.get('/api', (req, res) => {
+        res.json({ message: 'Hello from the Express backend!' })
+    })
+
+    app.post('/api/register',
     AuthenticationControllerPolicy.register,
     AuthenticationController.register)
 
-    app.post('/login', AuthenticationController.login)
+    app.post('/api/login', AuthenticationController.login)
 
-    app.post('/preference', PreferenceController.preference)
+    app.post('/api/preference', PreferenceController.preference)
 
-    app.post('/schedule', ScheduleController.schedule)
+    app.post('/api/schedule', ScheduleController.schedule)
 
-    app.get('/home', ScheduleController.getSchedule)
+    app.get('/api/home', ScheduleController.getSchedule)
 
-    app.put('/meetingConfirmation', ScheduleController.updateMeetingStatus)
+    app.put('/api/meetingConfirmation', ScheduleController.updateMeetingStatus)
 }
