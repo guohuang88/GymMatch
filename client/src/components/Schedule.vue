@@ -13,6 +13,8 @@
             <option value="ActiveSG">ActiveSG</option>
             <option value="Anytime Fitness">Anytime Fitness</option>
             <option value="Gym Box">Gym Box</option>
+            <option value="Energy One">Energy One</option>
+            <option value="Fitness First">Fitness First</option>
         </select>
         <br>
         <div v-if="error" class="error">{{ error }}</div>
