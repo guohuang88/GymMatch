@@ -42,6 +42,8 @@
         <option value="Calisthenics">Calisthenics</option>
         <option value="Body Building">Body Building</option>
         <option value="Power Lifting">Power Lifting</option>
+        <option value="Cross Fit">Cross Fit</option>
+        <option value="Weight Loss">Weight Loss</option>
       </select>
       <br>
       <label for="gymLocation">Choose a gym:</label>
@@ -49,6 +51,8 @@
         <option value="ActiveSG">ActiveSG</option>
         <option value="Anytime Fitness">Anytime Fitness</option>
         <option value="Gym Box">Gym Box</option>
+        <option value="Energy One">Energy One</option>
+        <option value="Fitness First">Fitness First</option>
       </select>
       <br>
       <div v-if="error" class="error">{{ error }}</div>

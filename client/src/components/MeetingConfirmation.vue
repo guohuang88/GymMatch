@@ -98,7 +98,6 @@ import ScheduleService from '../services/ScheduleService'
                 })
                 console.log(response)
                 this.matches = response
-
             } catch (error) {
                 throw new Error('Error updating meeting status:', error)
             }
