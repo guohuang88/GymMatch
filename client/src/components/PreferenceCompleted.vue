@@ -4,6 +4,7 @@
         class="mx-auto"
         max-width="400"
         tile
+        v-if="users.length > 0"
         >
         <v-list-item v-for="user in users" :key="user.id" three-line>
             <v-list-item-content>
@@ -18,6 +19,12 @@
             <v-btn @click="matchUser(user.id)">Match</v-btn>
         </v-list-item>
     </v-card>
+    <div v-else>
+            <div class="error">
+                No users found. You may change your preference.
+            </div>
+            <v-btn :to="{name: 'preference'}">Change Preference</v-btn>
+        </div>
   </div>
 </template>
 
