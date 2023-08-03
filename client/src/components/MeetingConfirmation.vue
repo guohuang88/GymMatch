@@ -19,10 +19,8 @@
                 <v-list-item-subtitle>
                     Status: {{ match.meetingStatus }}
                 </v-list-item-subtitle>
-                <!-- <v-list-item-actions> -->
                 <v-btn @click="acceptMeeting(match.userId)">Accept</v-btn>
                 <v-btn @click="declineMeeting(match.userId)">Decline</v-btn>
-                <!-- </v-list-item-actions> -->
             </v-list-item-content>
         </v-list-item>
         <h2>Invite Status</h2>
